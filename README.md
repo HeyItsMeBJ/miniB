@@ -61,4 +61,4 @@ Once you have created the keys.js file and added your Firebase API key to it, yo
 
 # Live
 
-https://live-react-blog-app.netlify.app/
+https://minib.vercel.app/

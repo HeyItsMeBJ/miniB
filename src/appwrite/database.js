@@ -85,7 +85,7 @@ class DatabaseServices {
         const res = await this.databases.listDocuments(
           conf.appwriteDatabaseId,
           conf.appwriteCollectionId,
-          [Query.equal("status", "active")]
+          [Query.equal("status", "active"),Query.orderDesc()]
         );
         return res.documents;
       }
