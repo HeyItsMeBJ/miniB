@@ -59,16 +59,16 @@ class DatabaseServices {
 
   async getPost(slug) {
     try {
-        console.log(slug);
-        
-      const res= await this.databases.getDocument(
+      console.log(slug);
+
+      const res = await this.databases.getDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug
       );
-      return res
+      return res;
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 
@@ -78,14 +78,18 @@ class DatabaseServices {
         const res = await this.databases.listDocuments(
           conf.appwriteDatabaseId,
           conf.appwriteCollectionId,
-          [Query.equal("status", "active"), Query.equal("userId", userId)]
+          [
+            Query.equal("status", "active"),
+            Query.equal("userId", userId),
+            Query.orderDesc("$createdAt"),
+          ]
         );
         return res.documents;
       } else {
         const res = await this.databases.listDocuments(
           conf.appwriteDatabaseId,
           conf.appwriteCollectionId,
-          [Query.equal("status", "active"),Query.orderDesc()]
+          [Query.equal("status", "active"), Query.orderDesc("$createdAt")]
         );
         return res.documents;
       }
